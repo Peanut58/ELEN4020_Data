@@ -1,5 +1,12 @@
 import numpy as np
 
+def rank2TensorMultOpenMP(A, B, C):
+    for i in range(0, len(A)):
+        for j in range(0, len(B[0])):
+            for k in range(len(B)):
+                C[i][j] += A[i][k] * B[k][j]
+    return C
+
 # A = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 # B = np.array([[1, 0, 1], [0, 1, 0], [1, 0, 1]])
 # C = np.zeros((3, 3), dtype=int)
@@ -12,10 +19,7 @@ for n in N:
     print(A)
     print(B)
 
-    for i in range(0, len(A)):
-        for j in range(0, len(B[0])):
-            for k in range(len(B)):
-                C[i][j] += A[i][k] * B[k][j]
+    rank2TensorMultOpenMP(A,B,C)
 
     arrC = np.dot(A, B)
     print("actual answer")
