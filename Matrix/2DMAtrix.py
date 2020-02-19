@@ -21,9 +21,9 @@ for n in N:
     #print(A)
     #print(B)
 
-    with pymp.Parallel(1) as p:
+    with pymp.Parallel(3) as p:
         rank2TensorMultOpenMP(A,B,C)
-        #p.print("Done")
+        p.print(p.num_threads, p.thread_num)
 
     #arrC = np.dot(A, B)
     #print("actual answer")
