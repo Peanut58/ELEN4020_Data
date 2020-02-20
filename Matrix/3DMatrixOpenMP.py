@@ -1,4 +1,5 @@
 import numpy as np 
+import pymp
 
 def rank3TensorMultOpenMP(A,B,C):
     for i in range(len(A)):
@@ -14,14 +15,7 @@ for n in N:
     A = np.random.randint(0, 10, size=(n,n,n))
     B = np.random.randint(0, 10, size=(n,n,n))
     C = np.zeros((n,n,n), dtype=int)
-    print("A")
-    print(A)
-    print("B")
-    print(B)
-    
-    print("\n")
 
+with pymp.Parallel(3) as p:
     rank3TensorMultOpenMP(A,B,C)
-    print("my answer")
-    print(C)
-
+    p.print(p.num_threads, p.thread_num)
