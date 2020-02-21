@@ -9,10 +9,10 @@ def rank3TensorMultOpenMP(A,B,C):
                 for l in range(len(B)):
                     C[i][j][k] += A[i][j][l]*B[l][j][k]
     return C
+
 N = [10,20,30]
 np.random.seed()
 noThreads = 3
-
 for n in N:
     A = np.random.randint(0, 10, size=(n,n,n))
     B = np.random.randint(0, 10, size=(n,n,n))

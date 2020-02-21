@@ -11,7 +11,7 @@ def rank2TensorMultPThread(A, B, C):
 
 N = [10,20,30]
 np.random.seed()
-noThreads = 2
+noThreads = 3
 for n in N:
     A = np.random.randint(0, 100, size=(n, n))
     B = np.random.randint(0, 100, size=(n, n))

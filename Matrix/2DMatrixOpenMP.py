@@ -11,9 +11,8 @@ def rank2TensorMultOpenMP(A, B, C):
 
 N = [10, 20, 30]
 np.random.seed()
-noThreads = 3
+noThreads = 2
 for n in N:
-    print("N is ",n)
     A = np.random.randint(0, 100, size=(n, n))
     B = np.random.randint(0, 100, size=(n, n))
     C = np.zeros((n, n), dtype=int)
