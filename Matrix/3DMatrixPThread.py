@@ -1,6 +1,7 @@
 import numpy as np 
 import time
 import threading
+import sys
 
 def rank3TensorMultPThread(A,B,C):
     for i in range(len(A)):
@@ -9,9 +10,11 @@ def rank3TensorMultPThread(A,B,C):
                 for l in range(len(B)):
                     C[i][j][k] += A[i][j][l]*B[l][j][k]
     return C
+    
 N = [10,20,30]
 np.random.seed()
-noThreads = 2
+noThreads = int(sys.argv[1])
+
 for n in N:
     A = np.random.randint(0, 10, size=(n,n,n))
     B = np.random.randint(0, 10, size=(n,n,n))
@@ -31,7 +34,7 @@ for n in N:
     for threadNum, thread in enumerate(threads):
         thread.join()
     t2 = time.perf_counter()
-    print(f"Time taken for a %s x %s with Python MP was {t2 - t1:0.4f} sec for %s threads"%(n,n,noThreads))
+    print(f"Time taken for a %s x %s x %s with Python MP was {t2 - t1:0.4f} sec for %s threads"%(n,n,n,noThreads))
     #print("my answer")
     #print(C)
 

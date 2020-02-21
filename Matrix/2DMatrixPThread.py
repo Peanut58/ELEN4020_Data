@@ -1,6 +1,7 @@
 import threading 
 import numpy as np 
 import time
+import sys
 
 def rank2TensorMultPThread(A, B, C): 
     for i in range(0, len(A)):
@@ -11,7 +12,7 @@ def rank2TensorMultPThread(A, B, C):
 
 N = [10,20,30]
 np.random.seed()
-noThreads = 3
+noThreads = int(sys.argv[1])
 for n in N:
     A = np.random.randint(0, 100, size=(n, n))
     B = np.random.randint(0, 100, size=(n, n))
