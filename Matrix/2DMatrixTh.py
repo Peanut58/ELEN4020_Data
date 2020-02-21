@@ -2,7 +2,7 @@ import threading
 import numpy as np 
 import time
 
-def rank2TensorMultOpenMP(A, B, C): 
+def rank2TensorMultPThread(A, B, C): 
     for i in range(0, len(A)):
         for j in range(0, len(B[0])):
             for k in range(len(B)):
@@ -13,7 +13,6 @@ N = [10,20,30]
 np.random.seed()
 noThreads = 2
 for n in N:
-    print("N is ",n)
     A = np.random.randint(0, 100, size=(n, n))
     B = np.random.randint(0, 100, size=(n, n))
     C = np.zeros((n, n), dtype=int)
@@ -23,7 +22,7 @@ for n in N:
     for threadNum in range(noThreads):
         # print("thread number " , threadNum)
         
-        x = threading.Thread(target=rank2TensorMultOpenMP, args=(A,B,C,))
+        x = threading.Thread(target=rank2TensorMultPThread, args=(A,B,C,))
         threads.append(x)
         # print(threading.enumerate())
         x.start()
