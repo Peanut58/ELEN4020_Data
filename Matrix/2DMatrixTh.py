@@ -1,5 +1,5 @@
-import numpy as np
-import threading
+import threading 
+import numpy as np 
 
 def rank2TensorMultOpenMP(A, B, C): 
     for i in range(0, len(A)):
@@ -8,19 +8,22 @@ def rank2TensorMultOpenMP(A, B, C):
                 C[i][j] += A[i][k] * B[k][j]
     return C
 
-def threadFunc():
-    for i in range(8):
-        rank2TensorMultOpenMP(A,B,C)
-
-
-N = [10, 20, 30]
-np.random.seed()
+N = [10,20,30]
 for n in N:
     print("N is ",n)
     A = np.random.randint(0, 100, size=(n, n))
     B = np.random.randint(0, 100, size=(n, n))
     C = np.zeros((n, n), dtype=int)
-   
-    th = threading.Thread(target=threadFunc)
+
+    threads = []
+    for threadNum in range(2):
+        # print("thread number " , threadNum)
+        x = threading.Thread(target=rank2TensorMultOpenMP, args=(A,B,C,))
+        threads.append(x)
+        # print(threading.enumerate())
+        x.start()
+
+    for threadNum, thread in enumerate(threads):
+        thread.join()
     
         
