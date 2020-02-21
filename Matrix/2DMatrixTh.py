@@ -10,6 +10,7 @@ def rank2TensorMultOpenMP(A, B, C):
     return C
 
 N = [10,20,30]
+np.random.seed()
 noThreads = 2
 for n in N:
     print("N is ",n)
