@@ -30,6 +30,5 @@ for n in N:
     for threadNum, thread in enumerate(threads):
         thread.join()
     t2 = time.perf_counter()
-
     print(f"Time taken for a %s x %s with Python MP was {t2 - t1:0.4f} sec for %s threads"%(n,n,noThreads))
         

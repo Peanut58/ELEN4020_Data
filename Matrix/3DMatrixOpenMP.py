@@ -1,5 +1,6 @@
 import numpy as np 
 import pymp
+import time
 
 def rank3TensorMultOpenMP(A,B,C):
     for i in range(len(A)):
@@ -10,12 +11,16 @@ def rank3TensorMultOpenMP(A,B,C):
     return C
 N = [10,20,30]
 np.random.seed()
+noThreads = 3
 
 for n in N:
     A = np.random.randint(0, 10, size=(n,n,n))
     B = np.random.randint(0, 10, size=(n,n,n))
     C = np.zeros((n,n,n), dtype=int)
 
-with pymp.Parallel(3) as p:
-    rank3TensorMultOpenMP(A,B,C)
-    p.print(p.num_threads, p.thread_num)
+    t1 = time.perf_counter()
+    with pymp.Parallel(noThreads) as p:
+        rank3TensorMultOpenMP(A,B,C)
+        #p.print(p.num_threads, p.thread_num)
+    t2 = time.perf_counter()
+    print(f"Time taken for a %s x %s with Python MP was {t2 - t1:0.4f} sec for %s threads"%(n,n,noThreads))
