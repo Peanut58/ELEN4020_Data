@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#run a programs automatically
-for noThreads in 1 2 3 4
+#run the programs automatically
+for noThreads in 1 2 4 8
 do
     echo $noThreads
     python3 2DMatrixOpenMP.py $noThreads
