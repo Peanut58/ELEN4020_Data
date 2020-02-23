@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#run a programs automatically
 for noThreads in 1 2 3 4
 do
     echo $noThreads
