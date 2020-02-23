@@ -4,6 +4,9 @@ import time
 import sys
 
 def rank2TensorMultPThread(A, B, C): 
+    if len(A[0]) != len(B):
+        sys.exit('The number of columns in Matrix A is not equal to the number of rows in Matrix B')
+
     for i in range(0, len(A)):
         for j in range(0, len(B[0])):
             for k in range(len(B)):
@@ -14,18 +17,15 @@ N = [10,20,30]
 np.random.seed()
 noThreads = int(sys.argv[1])
 for n in N:
-    A = np.random.randint(0, 100, size=(n, n))
-    B = np.random.randint(0, 100, size=(n, n))
+    A = np.random.randint(0, n, size=(n, n))
+    B = np.random.randint(0,n, size=(n, n))
     C = np.zeros((n, n), dtype=int)
 
     threads = []
     t1 = time.perf_counter()
     for threadNum in range(noThreads):
-        # print("thread number " , threadNum)
-        
         x = threading.Thread(target=rank2TensorMultPThread, args=(A,B,C,))
         threads.append(x)
-        # print(threading.enumerate())
         x.start()
 
     for threadNum, thread in enumerate(threads):
