@@ -14,7 +14,7 @@ The source code files are as follows:
 3DMatrixPThread.py - 3D Matrix multiplication using PThreads - Number of threads must be specified 
 
 The program can be run and compiled using the runTest.sh bash file.
-It specifies the number of threads from 1 to 4 and provides the execution time for the 2D and 3D multiplicaiton, 
+It specifies the number of threads (1,2,4,8) and provides the execution time for the 2D and 3D multiplicaiton, 
 using the specified number of threads for paralellisation. It also uses matrices with an increasing number of 
 elements to represent how scaling and the number of threads impacts paralellisation. The script shows the execution
 time taken for matrix multiplication using PythonMP and Threading. 
@@ -26,4 +26,4 @@ To run any of the files above:
 -For file with no parallelisation use command: 
     $python3 <filename>
 -For file with parallelisation, use command:
-    %python3 <filename> <no. of threads>
+    $python3 <filename> <no. of threads>
