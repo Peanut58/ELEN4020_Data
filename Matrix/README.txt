@@ -19,8 +19,6 @@ using the specified number of threads for paralellisation. It also uses matrices
 elements to represent how scaling and the number of threads impacts paralellisation. The script shows the execution
 time taken for matrix multiplication using PythonMP and Threading. 
 
-These can be built and compiled using 
-
 The program can be run using the runTest.sh bash file. 
 This file outputs the times for all the threads and dimensions. 
 
